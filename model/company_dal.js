@@ -5,16 +5,16 @@ var db  = require('./db_connection.js');
 var connection = mysql.createConnection(db.config);
 
 exports.getAll = function(callback) {
-    var query = 'SELECT * FROM Address_View;';
+    var query = 'SELECT * FROM Company_View;';
 
     connection.query(query, function(err, result) {
         callback(err, result);
     });
 };
 
-exports.getById = function(address_id, callback) {
-    var query = 'SELECT * FROM Address_View WHERE address_id = ?';
-    var queryData = [address_id];
+exports.getById = function(company_id, callback) {
+    var query = 'SELECT * FROM Company_View WHERE company_id = ?';
+    var queryData = [company_id];
 
     connection.query(query, queryData, function(err, result) {
         callback(err, result);
@@ -22,11 +22,11 @@ exports.getById = function(address_id, callback) {
 };
 
 exports.insert = function(params, callback) {
-    var query = 'INSERT INTO Address (street, zip_code) VALUES (?, ?)';
+    var query = 'INSERT INTO Company (company_name) VALUES (?)';
 
     // the question marks in the sql query above will be replaced by the values of the
     // the data in queryData
-    var queryData = [params.street, params.zip_code];
+    var queryData = [params.company_name];
 
     connection.query(query, queryData, function(err, result) {
         callback(err, result);
@@ -34,9 +34,9 @@ exports.insert = function(params, callback) {
 
 }
 
-exports.delete = function(address_id, callback) {
-    var query = 'DELETE FROM Address WHERE address_id = ?';
-    var queryData = [address_id];
+exports.delete = function(company_id, callback) {
+    var query = 'DELETE FROM Company WHERE company_id = ?';
+    var queryData = [company_id];
 
     connection.query(query, queryData, function(err, result) {
         callback(err, result);

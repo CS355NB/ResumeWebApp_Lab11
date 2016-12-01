@@ -5,14 +5,15 @@ var db  = require('./db_connection.js');
 var connection = mysql.createConnection(db.config);
 
 /*
- create or replace view school_view as
- select s.*, a.street, a.zipcode from school s
- join address a on a.address_id = s.address_id;
+In SQL Database:
+ create or replace view School_View as
+ select s.*, a.street, a.zipcode from School s
+ join Address a on a.address_id = s.address_id;
 
  */
 
 exports.getAll = function(callback) {
-    var query = 'SELECT * FROM school_view;';
+    var query = 'SELECT * FROM School_View;';
 
     connection.query(query, function(err, result) {
         callback(err, result);
@@ -20,7 +21,7 @@ exports.getAll = function(callback) {
 };
 
 exports.getById = function(school_id, callback) {
-    var query = 'SELECT * FROM school_view WHERE school_id = ?';
+    var query = 'SELECT * FROM School_View WHERE school_id = ?';
     var queryData = [school_id];
 
     connection.query(query, queryData, function(err, result) {
@@ -29,7 +30,7 @@ exports.getById = function(school_id, callback) {
 };
 
 exports.insert = function(params, callback) {
-    var query = 'INSERT INTO school (school_name, address_id) VALUES (?, ?)';
+    var query = 'INSERT INTO School (school_name, address_id) VALUES (?, ?)';
 
     // the question marks in the sql query above will be replaced by the values of the
     // the data in queryData
@@ -42,7 +43,7 @@ exports.insert = function(params, callback) {
 }
 
 exports.delete = function(school_id, callback) {
-    var query = 'DELETE FROM school WHERE school_id = ?';
+    var query = 'DELETE FROM School WHERE school_id = ?';
     var queryData = [school_id];
 
     connection.query(query, queryData, function(err, result) {
