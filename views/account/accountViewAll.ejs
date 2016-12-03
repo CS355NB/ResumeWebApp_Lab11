@@ -9,13 +9,13 @@
         <br />
 
         <table border="1">
-            <tr><th>Name</th><th>Account</th><th>Action</th></tr>
+            <tr><th>Name</th><th>Email</th></tr>
                 <% for(var i=0; result.length > i; i++ ) { %>
             <tr>
-            <td><a href="/school/?school_id=<%= result[i].school_id %>"><%= result[i].school_name %></a></td>
-            <td><%= result[i].street %>, <%= result[i].zip_code %></td>
-            <td><form action="/school/delete/">
-                <input type="hidden" name="school_id" id="school_id" value="<%= result[i].school_id %>" />
+            <td><%= result[i].last_name %>, <%= result[i].first_name %></td>
+            <td><a href="/account/?account_id=<%= result[i].account_id %>"><%= result[i].email %></a></td>
+            <td><form action="/account/delete/">
+                <input type="hidden" name="account_id" id="account_id" value="<%= result[i].account_id %>" />
                 <input type="submit" value="Delete"/>
                 </form>
             </td>
