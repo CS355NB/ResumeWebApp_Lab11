@@ -1,24 +1,24 @@
 <html>
-    <head>
-        <title>Accounts</title>
-    </head>
-    <body>
-        <h1>Accounts</h1>
-        <a href="/account/add">Add New Account</a> <br />
+<head>
+    <title>Accounts</title>
+</head>
+<body>
+<h1>Accounts</h1>
+<a href="/account/add">Add New Account</a> <br />
 
-        <br />
+<br />
 
-        <table border="1">
-            <tr><th>Name</th><th>Email</th></tr>
-                <% for(var i=0; result.length > i; i++ ) { %>
-            <tr>
-            <td><%= result[i].last_name %>, <%= result[i].first_name %></td>
-            <td><a href="/account/?account_id=<%= result[i].account_id %>"><%= result[i].email %></a></td>
-            <td><form action="/account/delete/">
+<table border="1">
+    <tr><th>Name</th><th>Email</th><th>Action</th></tr>
+    <% for(var i=0; result.length > i; i++ ) { %>
+    <tr>
+        <td><%= result[i].last_name %>, <%= result[i].first_name %></td>
+        <td><a href="/account/?account_id=<%= result[i].account_id %>"><%= result[i].email %></a></td>
+        <td><form action="/account/delete/">
                 <input type="hidden" name="account_id" id="account_id" value="<%= result[i].account_id %>" />
                 <input type="submit" value="Delete"/>
-                </form>
-            </td>
+            </form>
+        </td>
     </tr>
     <% } %>
 </table>

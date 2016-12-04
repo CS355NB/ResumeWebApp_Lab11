@@ -1,19 +1,19 @@
 var mysql   = require('mysql');
 var db  = require('./db_connection.js');
 
-/* DATABASE CONFIGURATION */
+// DATABASE CONFIGURATION
 var connection = mysql.createConnection(db.config);
 
 exports.getAll = function(callback) {
-    var query = 'SELECT * FROM Account_View;';
+    var query = 'SELECT * FROM Account;';
 
     connection.query(query, function(err, result) {
         callback(err, result);
     });
 };
 
-exports.getById = function(address_id, callback) {
-    var query = 'SELECT * FROM Account_View WHERE account_id = ?';
+exports.getById = function(account_id, callback) {
+    var query = 'SELECT * FROM Account WHERE account_id = ?';
     var queryData = [account_id];
 
     connection.query(query, queryData, function(err, result) {
@@ -34,7 +34,7 @@ exports.insert = function(params, callback) {
 
 }
 
-exports.delete = function(address_id, callback) {
+exports.delete = function(account_id, callback) {
     var query = 'DELETE FROM Account WHERE account_id = ?';
     var queryData = [account_id];
 
