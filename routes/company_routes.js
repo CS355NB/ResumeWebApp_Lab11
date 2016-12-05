@@ -63,7 +63,7 @@ router.get('/insert', function(req, res){
             }
             else {
                 //poor practice, but we will handle it differently once we start using Ajax
-                res.redirect(302, '/school/all');
+                res.redirect(302, '/company/all');
             }
         });
     }

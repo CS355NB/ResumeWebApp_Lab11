@@ -32,7 +32,7 @@ router.get('/', function(req, res){
         });
     }
 });
-/*
+
 // Return the add a new account form
 router.get('/add', function(req, res){
     // passing all the query parameters (req.query) to the insert function instead of each individually
@@ -54,6 +54,9 @@ router.get('/insert', function(req, res){
     }
     else if(req.query.last_name == null) {
         res.send('Last Name must be provided');
+    }
+    else if(req.query.email == null) {
+        res.send('Email must be provided');
     }
     else {
         // passing all the query parameters (req.query) to the insert function instead of each individually
@@ -86,5 +89,5 @@ router.get('/delete', function(req, res){
         });
     }
 });
-*/
+
 module.exports = router;
